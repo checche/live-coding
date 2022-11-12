@@ -1,7 +1,7 @@
 # Settings
 Root.default.set("D")
 Scale.default = Scale.major
-Clock.bpm = 160
+Clock.bpm = 60
 
 I   = PGroup(0, 2, 4)
 II  = PGroup(1, 3, 5)
@@ -23,12 +23,34 @@ VII7 = PGroup(VII).concat(12)
 ch = var([IV7, III7, VI7, VI7], 4)
 c1 >> piano(ch, dur=4)
 
-b1 >> bass(P[4,3,6,6] - 1, dur=4, oct=4)
+b0 >> bass(P[1,3,4,5,6,3,4,5] - 1, dur=2, oct=4, sample=1, amp=0.9)
 
-d1 >> play("x xx ", sample=4)
-d2 >> play("o oo o  ", sample=8)
+b0.stop()
 
-d1 >> play(P["Hello kobe univ! We are Pablo :)"] & P["(Xo)--[- -]"], sample=[1,2])
+b1 >> bass(P[1,3,4,5,6,5,4,5] - 1, dur=[2, 2, 4], oct=4, sample=1, amp=0.9)
+
+b1.stop()
+
+be >> bell[P[4,5,7,1], dur=PDur(3,8)]
+
+d0 >> play("#", dur=16)
+d1 >> play("x ", sample=4)
+d2 >> play(" -", sample=4)
+d2 >> play("( o)- {-* [---]}", sample=8)
+
+p0 >> piano(P[1,3,5] - 1, dur=1/4, amp=1.3, pan=-1)
+
+p1 >> piano(P[3, 5, 7, 10, 9, 8, 7, 8] - 1, dur=1, amp=1.3, pan=1)
+
+p2 >> piano(P[10, 9, 8, 7, 6], dur=[1/2, 1/4, 1/4, 1/4, 3/4])
+
+p0.stop()
+p1.stop()
+p2.stop()
+
+d1 >> play(P["Hello kobe univ! We are Pablo :)"] & P["(Xo)--[----]"], sample=[1,2])
+
+d1.stop()
 
 d_all.stop()
 
